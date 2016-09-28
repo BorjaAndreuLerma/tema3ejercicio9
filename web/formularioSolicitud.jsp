@@ -14,13 +14,13 @@
         <title>Formulario de Solicitud Cita Médica</title>
     </head>
     <body>
-        <% if((request.getParameter("name")==null
-                && request.getParameter("email")==null)
+        <% if((request.getParameter("practica")==null
+                && request.getParameter("cantidad")==null)
                 || 
-                (request.getParameter("name").equals("")
-                && request.getParameter("email").equals(""))
+                (request.getParameter("practica").equals("")
+                && request.getParameter("cantidad").equals(""))
                 ){ %>
-        <form method="POST" action="formularioRespuesta.jsp">
+        <form method="POST" action="formularioSolicitud.jsp">
             <h2>Solicitud de Autorización de Practicas Médicas</h2><br>
             Practica: <input type="text" name="practica" value="" /><br>
             Cantidad: <input type="text" name="cantidad" value="" /><br>

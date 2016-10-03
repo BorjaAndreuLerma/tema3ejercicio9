@@ -1,3 +1,4 @@
+<%@page import="entidad.datosformulario"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : formularioRespuesta
@@ -14,12 +15,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Respuesta Médica</title>
     </head>
-    <body>        
+    <body>  
         <b>Respuesta a su petición:</b><br>
         <b>Práctica</b>: <jsp:getProperty name="usuario" property="practica"/><br>
         <b>Cantidad</b>: <jsp:getProperty name="usuario" property="cantidad"/><br>
         <b>Estado</b>: <jsp:getProperty name="usuario" property="estado"/>
-        <jsp:getProperty name="usuario" property="razon_no"/>
-        
+        <jsp:getProperty name="usuario" property="razon_no"/>        
     </body>
 </html>

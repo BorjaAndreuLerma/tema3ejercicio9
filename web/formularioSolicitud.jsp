@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="entidad.datosformulario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
 <!DOCTYPE html>
@@ -14,12 +15,10 @@
         <title>Formulario de Solicitud Cita Médica</title>
     </head>
     <body>
-        <% if((request.getParameter("practica")==null
-                && request.getParameter("cantidad")==null)
-                || 
-                (request.getParameter("practica").equals("")
-                && request.getParameter("cantidad").equals(""))
-                ){ %>
+        <% if ((request.getParameter("practica") == null
+                    && request.getParameter("cantidad") == null)
+                    || (request.getParameter("practica").equals("")
+                    && request.getParameter("cantidad").equals(""))) { %>
         <form method="POST" action="formularioSolicitud.jsp">
             <h2>Solicitud de Autorización de Practicas Médicas</h2><br>
             Practica: <input type="text" name="practica" value="" /><br>
@@ -28,34 +27,12 @@
         </form>
         <% } else { %>
         <% String practica;
-            int cantidad;%>
-        <% double concesion = Math.random();
-            double razon = Math.random();
-            String estado = " ", razon_no = " ";
-
-            if (concesion < 0.5) {
-                estado = "Petición Autorizada.";
-            } else {
-                estado = "Petición Denegada. ";
-                if (razon < 0.33) {
-                    razon_no = "Usted tiene demasiadas peticiones realizadas este mes.";
-                }
-                if (razon < 0.66 && razon > 0.33) {
-                    razon_no = "No disponemos de esa cantidad.";
-                }
-                if (razon > 0.66) {
-                    razon_no = "No queremos darselo.";
-                }
-            }
-        %>
-        <% 
-                practica = request.getParameter("practica");
-                cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            int cantidad;
+            practica = request.getParameter("practica");
+            cantidad = Integer.parseInt(request.getParameter("cantidad"));
         %>  
         <jsp:setProperty name="usuario" property="practica" value="<%= practica%>" />
         <jsp:setProperty name="usuario" property="cantidad" value="<%= cantidad%>" />
-        <jsp:setProperty name="request" property="estado" value="<%= estado%>" />
-        <jsp:setProperty name="request" property="razon_no" value="<%= razon_no%>" />
         <jsp:forward page="/formularioRespuesta.jsp"></jsp:forward>
         <% };%>
     </body>
